@@ -4,18 +4,27 @@ import plotly.graph_objects as go
 import numpy as np
 import plotly.offline as opy
 import plotly.express as px
-
-
 import pandas as pd
+import plotly.express as px
 
-#fig = go.Figure(data=go.Scatter(x=data['math score'], y=data['reading score'], mode='markers', marker_color=data['gender']))
+data = pd.read_csv('data.csv')
 
-# Create your views here.
+
+def get_pie_chart():
+    fig = px.pie(data, values='reading score', names='race/ethnicity', title='race/ethnicity')
+    return opy.plot(fig, output_type='div')
+
+    #fig = go.Figure(data=go.Scatter(x=data['math score'], y=data['reading score'], mode='markers', marker_color=data['gender']))
+
+    # Create your views here.
+
 
 def index(request):
     # Nous utilisons pandas pour faciliter la lecture des données du csv
-    data = pd.read_csv('data.csv')
-    figo = px.scatter(data, x="math score", y="reading score", color="lunch",
-                 hover_data=['lunch'])
+    figo = px.scatter(data, x="reading score", y="writing score", color="race/ethnicity",
+                      hover_data=['gender'])
+    figo.update_layout(title='',
+                       yaxis_zeroline=False, xaxis_zeroline=False)
     div = opy.plot(figo, output_type='div')
-    return TemplateResponse(request, 'index.html', {'data' : div})
+    get_pie_chart()
+    return TemplateResponse(request, 'index.html', {'data': div, 'pie' : get_pie_chart()})
