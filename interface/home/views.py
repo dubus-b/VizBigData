@@ -18,4 +18,8 @@ def index(request):
     figo = px.scatter(data, x="math score", y="reading score", color="lunch",
                  hover_data=['lunch'])
     div = opy.plot(figo, output_type='div')
-    return TemplateResponse(request, 'index.html', {'data' : div})
+
+    figu = px.parallel_coordinates(data, labels={'':''}, color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=2)
+    div2 = opy.plot(figu, output_type='div')
+
+    return TemplateResponse(request, 'index.html', {'data' : div, 'data2': div2})
