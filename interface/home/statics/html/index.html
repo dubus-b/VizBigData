@@ -10,20 +10,24 @@
 
 <body>
     {% block content %}
-    <h1 class="ui center aligned header">Responsive UI Examples</h1>
+    <h1 class="ui center aligned header">Projet Visualisation of Massive Data</h1>
 
 
-    <h2 class="ui center aligned header">Basic Responsive</h2>
+    <h2 class="ui center aligned header">Dans quelle mesures les origines sociales et les  démographiques ont-elles un lien avec les résultats scolaires ?</h2>
     
     
-    <h3 class="ui center aligned header">Container</h3>
- 
+    <h3 class="ui center aligned header"></h3>
     <div class="ui container">
       <div class="ui segments">
-        <div class="ui segment">{{data | safe}}</div>
-        <div class="ui segment">{{data2 | safe}}</div>
-        <div class="ui segment">Content</div>
-        <div class="ui segment">Content</div>
+        <div class="ui segment">        
+          {{data | safe}}
+        </div>
+        <div class="ui segment">
+          {{pie | safe}}
+        </div>
+        <div class="ui segment">
+          {{data2 | safe}}
+        </div>
       </div>
     </div>
     
